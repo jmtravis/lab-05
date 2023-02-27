@@ -13,8 +13,11 @@ def get_wifi_signal_strength() -> int:
         The signal strength in dBm.
     """
     # Question 1: What is dBm? What values are considered good and bad for WiFi signal strength?
+    # dBm is defined as "a signal strength or power level." Signals better than -85 decibels are considered usable and strong and a signal that's weaker than -100 dBm is too problematic to be useful 
+    #  (i.e., results in dropped calls and incomplete data transmissions).
 
     # Question 2: Why do we need to check the OS? What is the difference between the commands for each OS?
+    #  Checking the operating system to ensure the correct command is used for the specific operating system.
 
     # Question 3: In your own words, what is subprocess.check_output doing? What does it return?
     # HINT: https://docs.python.org/3/library/subprocess.html#subprocess.check_output
@@ -24,6 +27,7 @@ def get_wifi_signal_strength() -> int:
 
     # Question 5: In the Windows case, why do we need to convert the signal quality to dBm?
     # HINT: https://learn.microsoft.com/en-us/windows/win32/api/wlanapi/ns-wlanapi-wlan_association_attributes?redirectedfrom=MSDN
+    
     if platform.system() == 'Linux': # Linux
         output = subprocess.check_output("iwconfig wlan0", shell=True)
         match = re.search(r"Signal level=(-?\d+) dBm", output.decode('utf-8'))
