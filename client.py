@@ -46,7 +46,8 @@ def main():
         
     # TODO: create a dataframe from the data
     #       Make sure to name the columns appropriately (see the plot below)
-    df = None
+    df = pd.DataFrame(data, columns=['size','location','delay_mean', 'delay_std'])
+
     
     fig = px.line(
         df,
@@ -69,7 +70,10 @@ def main():
     # Question 10: Do you notice any trends in the data?
     #              How does it differ from Part 1?
     #              What do you think is causing the differences?
+    # Delay starts at high value when message size is zero. Delay decreases as message size increases. 
+    # It reaches the lowest delay at 1000 bytes and delay starts to increase as byte size increases from 1000 bytes.
 
 
 if __name__ == "__main__":
     main()
+
